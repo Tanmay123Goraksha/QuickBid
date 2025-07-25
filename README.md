@@ -1,194 +1,173 @@
-🛒 QuickBid – Online Auction Platform
-QuickBid is a full-stack real-time online auction platform that allows users to list items for auction, place live bids, track their participation and bidding history, and manage their profile. The system is designed to be responsive, secure, and scalable, offering a seamless user experience for both sellers and bidders.
 
-🔍 Table of Contents
-🛠️ Features
+```markdown
+# 🛒 QuickBid – Real-Time Auction Platform
 
-💻 Tech Stack
+QuickBid is a full-stack real-time auction platform where users can create listings,
+ participate in live bidding, and manage their auction activities. Built for speed, scalability,
+and a seamless user experience.
 
-📦 Project Structure
+---
 
-🧪 Setup Instructions
+## 📌 Features
 
-1. Backend Setup
+- ✅ JWT-based User Authentication
+- ✅ Create and List Auctions
+- ✅ Real-Time Bidding via Socket.IO
+- ✅ Countdown Timers for Auctions
+- ✅ View Participated & Won Auctions
+- ✅ Bidding History per User
+- ✅ Search Auctions
+- ✅ End Auctions (Seller Only)
+- ✅ Responsive, Clean UI
 
-2. Frontend Setup
+---
 
-📸 Screenshots
+## 💻 Tech Stack
 
-🧩 APIs & Routes
+**Frontend**  
+- React.js  
+- React Router DOM  
+- Axios  
+- Socket.io-client  
+- CSS Modules
 
-🔐 Authentication
+**Backend**  
+- Node.js  
+- Express.js  
+- Socket.io  
+- PostgreSQL  
+- JWT (JSON Web Tokens)  
+- bcrypt (Password Hashing)
 
-📈 Future Enhancements
+**Dev Tools**  
+- Vite (Frontend Bundler)  
+- npm  
+- Git & GitHub
 
-📄 License
+---
 
-🛠️ Features
-✅ User Authentication (JWT-based)
+## 📁 Project Structure
 
-✅ Create & Manage Auctions
+```
 
-✅ Real-time Bidding using WebSockets (socket.io)
-
-✅ Auction Countdown Timer
-
-✅ Track Bidding History
-
-✅ View Participated and Won Auctions
-
-✅ User Profile with Edit Support
-
-✅ Search Auctions
-
-✅ End Auction (Seller Only)
-
-✅ Responsive and modern UI
-
-💻 Tech Stack
-Frontend:
-React.js
-
-React Router DOM
-
-Axios
-
-Socket.io-client
-
-CSS (Modular & Custom)
-
-Backend:
-Node.js
-
-Express.js
-
-Socket.io
-
-JWT Authentication
-
-PostgreSQL (via pg library)
-
-DevOps:
-Git & GitHub
-
-npm (package manager)
-
-Vite (React bundler)
-
-📦 Project Structure
-csharp
-Copy
-Edit
 QuickBid/
-├── client/                    # React Frontend
-│   ├── src/
-│   │   ├── components/        # Navbar, AuctionCard, etc.
-│   │   ├── pages/             # Profile, Home, Bidding, etc.
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   ├── public/
-│   └── index.html
-│
-├── server/                    # Node Backend
-│   ├── controllers/
+├── client/           # React frontend
+│   └── src/
+│       ├── components/
+│       ├── pages/
+│       └── App.jsx
+├── server/           # Node.js backend
 │   ├── routes/
+│   ├── controllers/
 │   ├── middleware/
-│   ├── models/ (if using ORM)
-│   ├── index.js
-│   └── db.js
-│
-├── .gitignore
-├── README.md
-└── package.json
-🧪 Setup Instructions
-1. Backend Setup
-Install dependencies:
+│   └── index.js
+├── package.json
+└── README.md
 
-bash
-Copy
-Edit
+````
+
+---
+
+## 🧪 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Tanmay123Goraksha/QuickBid.git
+cd QuickBid
+````
+
+---
+
+### 2. Backend Setup (Node.js)
+
+```bash
 cd server
 npm install
-Configure PostgreSQL Database:
+```
 
-Create a database named auction_db (or as per your config).
+**Create a `.env` file:**
 
-Add .env file with the following:
-
-ini
-Copy
-Edit
+```env
 DATABASE_URL=postgresql://<user>:<password>@localhost:5432/auction_db
-JWT_SECRET=your_jwt_secret
-Run backend server:
+JWT_SECRET=your_jwt_secret_key
+```
 
-bash
-Copy
-Edit
+**Run the backend:**
+
+```bash
 node index.js
-or with nodemon:
-
-bash
-Copy
-Edit
+# or with nodemon
 npm run dev
-2. Frontend Setup
-Install dependencies:
+```
 
-bash
-Copy
-Edit
+---
+
+### 3. Frontend Setup (React)
+
+```bash
 cd client
 npm install
-Run frontend app:
-
-bash
-Copy
-Edit
 npm run dev
-Visit http://localhost:5173
+```
 
-🧩 APIs & Routes
-🔐 Authentication
-POST /auth/register
+Visit: [http://localhost:5173](http://localhost:5173)
 
-POST /auth/login
+---
 
-JWT token used for protected routes.
+## 🔐 Authentication
 
-🧑‍💼 User Profile
-GET /auction/profile – Get user info
+* **Register/Login** to receive a JWT
+* Token is stored in `localStorage`
+* Protected routes require `Authorization: Bearer <token>` in headers
+* Auth middleware handles verification on backend
 
-PUT /auction/profile/update – Update profile
+---
 
-GET /auction/profile/bidding-history
+## 📦 API Endpoints
 
-GET /auction/profile/participated-auctions
+### 🔑 Auth
 
-GET /auction/profile/won-auctions
+* `POST /auth/register`
+* `POST /auth/login`
 
-📦 Auctions
-GET /auction/active
+### 👤 Profile
 
-GET /auction/search?query=...
+* `GET /auction/profile`
+* `PUT /auction/profile/update`
+* `GET /auction/profile/bidding-history`
+* `GET /auction/profile/participated-auctions`
+* `GET /auction/profile/won-auctions`
 
-GET /auction/my-auctions
+### 📦 Auctions
 
-GET /auction/:id – Get auction details
-
-POST /auction/create
-
-POST /auction/:id/bid
-
-PATCH /auction/:id/end
-
-🔐 Authentication
-JWT token is issued on login and stored in localStorage
-
-Token is sent in Authorization: Bearer <token> header
-
-Middleware protects sensitive routes on backend
+* `GET /auction/active`
+* `GET /auction/search?query=...`
+* `GET /auction/my-auctions`
+* `GET /auction/:id`
+* `POST /auction/create`
+* `POST /auction/:id/bid`
+* `PATCH /auction/:id/end`
 
 
-📄 License
-This project is open-source and available under the MIT License.
+
+
+---
+
+## ✨ Author
+
+**Tanmay Goraksha**
+
+* 🔗 [GitHub](https://github.com/Tanmay123Goraksha)
+* ✉️ [tanmay1goraksha@gmail.com](mailto:tanmay1goraksha@gmail.com)
+
+---
+
+> *Built with passion and real-time tech to simplify online auctions!*
+
+```
+
+---
+
+
+```
