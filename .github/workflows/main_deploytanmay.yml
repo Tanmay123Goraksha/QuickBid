@@ -23,11 +23,12 @@ jobs:
         with:
           node-version: '20.x'
 
-      - name: npm install, build, and test
-        working-directory: ./client
+      - name: npm install and build
+        working-directory: ./frontend
         run: |
           npm install
           npm run build
+
 
 
       - name: Upload artifact for deployment job
@@ -65,3 +66,4 @@ jobs:
           package: .
 
           
+
