@@ -66,9 +66,10 @@ jobs:
         with:
           app-name: 'deploytanmay'
           slot-name: 'Production'
-          package: .
+          package: build
 
           
+
 
 
 
