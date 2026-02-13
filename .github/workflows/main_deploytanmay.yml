@@ -62,13 +62,14 @@ jobs:
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
-        uses: azure/webapps-deploy@v3
+        uses: azure/webapps-deploy@v4
         with:
           app-name: 'deploytanmay'
           slot-name: 'Production'
           package: build
 
           
+
 
 
 
